@@ -1,0 +1,17 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+.env
+
+# Jupyter
+.ipynb_checkpoints/
+
+# DVC
+.dvc/cache
+.dvc/tmp
+
+# Artifacts (tracked by DVC)
+data/*.csv
+models/*.joblib

@@ -1,0 +1,47 @@
+stages:
+  make_data:
+    cmd: python src/make_data.py
+    deps:
+      - src/make_data.py
+    params:
+      - data.n_samples
+      - data.n_features
+      - data.n_informative
+      - data.class_sep
+      - data.random_state
+    outs:
+      - data/dataset.csv
+      - data/meta.json
+
+  train:
+    cmd: python src/train.py
+    deps:
+      - src/train.py
+      - data/dataset.csv
+    params:
+      - data.test_size
+      - data.random_state
+      - train.C
+      - train.max_iter
+      - train.solver
+    outs:
+      - models/model.joblib
+      - models/train_meta.json
+
+  evaluate:
+    cmd: python src/evaluate.py
+    deps:
+      - src/evaluate.py
+      - data/dataset.csv
+      - models/model.joblib
+    params:
+      - data.test_size
+      - data.random_state
+      - eval.thresholds
+    metrics:
+      - metrics.json
+    plots:
+      - reports/roc.csv:
+          x: fpr
+          y:
+            - tpr

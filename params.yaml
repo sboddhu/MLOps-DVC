@@ -1,0 +1,13 @@
+data:
+  n_samples: 1500
+  n_features: 20
+  n_informative: 10
+  class_sep: 1.0
+  random_state: 42
+  test_size: 0.2
+train:
+  C: 1.0
+  max_iter: 500
+  solver: lbfgs
+eval:
+  thresholds: 50

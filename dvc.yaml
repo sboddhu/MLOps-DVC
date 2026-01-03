@@ -42,4 +42,3 @@ stages:
       - metrics.json
     plots:
       - reports/roc.csv
-            - tpr
